@@ -10,4 +10,6 @@ public interface Authorrepository extends JpaRepository<Author,Long> {
 
     @Query(value = "Select * from Author ",nativeQuery = true)
     List<Author> getAuthorList();
+
+
 }
