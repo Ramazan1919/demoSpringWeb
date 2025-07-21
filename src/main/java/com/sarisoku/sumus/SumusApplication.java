@@ -9,5 +9,4 @@ public class SumusApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SumusApplication.class, args);
 	}
-
 }

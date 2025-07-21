@@ -1,0 +1,36 @@
+1) api katmanı 2 ) service katmanı 3 )data katmanı
+
+API KATMANI
+Controller yer alır burada sen son kullanıcaya(Clienta)
+
+SERVİCE KATMANI
+Tüm işlerini gerçekleştirirsin ->3+5=8 return 8
+
+DATA KATMANI
+VERİLERİN TUTULDUĞU ÜZERİNDE OYNANDIĞI (VERİTABANI İŞLEMLERİ) - hafızanda 10 koy var , ben hangi koyluyum -> sarısoku
+
+
+sarısokuni servise iletiyorsun
+serviste bu bilgiyi alıp controllera iletiyor
+
+Controller da yanıt verir
+
+dependency injection nedir?
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-
+relational database  - mysql,mssql,oracle,postgresql
+
+
+public Class Masa{
+int ayak;
+int boyu  ;
+int eni;
+
+}[{1,1,1},{2,2,2}] -
+ databaseler tablolardan oluşur , tablolar
+
+ dbfirst , codefirst
+
+
+Hibernate  ORM -> Object Relational Mappıng
+
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-*-*-*-*--**
