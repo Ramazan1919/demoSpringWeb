@@ -20,9 +20,8 @@ public class AuthorServiceImpl implements AuthorService{
     @Override
     public List<Author> getAuthorList() {
 
-
-
         return authorrepository.getAuthorList();
+
     }
 
     @Override
@@ -35,6 +34,11 @@ public class AuthorServiceImpl implements AuthorService{
          authorrepository.deleteById(id);
     }
 
+    @Override
+    public Author saveAuthor(Author author) {
+        Author saved = authorrepository.save(author);
+        return  saved;
+    }
 
 
 }
