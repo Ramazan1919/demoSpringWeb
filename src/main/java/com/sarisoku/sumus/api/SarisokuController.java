@@ -41,7 +41,7 @@ public class SarisokuController {
     }
 
     @GetMapping("/getAuthorById")
-    public ResponseEntity<BaseApiResponse<List<Author>>> getAuthorbyId(Long Id){
+    public ResponseEntity<BaseApiResponse<List<Author>>> getAuthorbyId(@RequestParam Long Id){
 
         AuthorDto authorDto=new AuthorDto();
 

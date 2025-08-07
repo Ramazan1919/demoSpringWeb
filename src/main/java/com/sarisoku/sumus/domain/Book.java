@@ -1,5 +1,6 @@
 package com.sarisoku.sumus.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
@@ -24,7 +25,8 @@ public class Book {
     private Timestamp date;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "author_id", nullable = false)
+    @JoinColumn(name = "author_id", nullable = true)
+    @JsonBackReference
     private Author author;
 
 }
