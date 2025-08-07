@@ -26,6 +26,8 @@ public class BaseApiResponse<T> {
         this.errors = errors;
     }
 
+
+
     // Başarı durumlu yanıt oluşturmak için
     public static <T> BaseApiResponse<T> ok(T data, String message) {
         return new BaseApiResponse<>(true, message, data, null);

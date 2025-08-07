@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("api/v1")
@@ -28,9 +29,9 @@ public class SarisokuController {
     }
 
     @GetMapping("/getAuthor")
-    public ResponseEntity<BaseApiResponse<List<Author>>> getAuthorList( ){
+    public ResponseEntity<BaseApiResponse<List<Author>>> getAuthorList() {
 
-        AuthorDto authorDto=new AuthorDto();
+        AuthorDto authorDto = new AuthorDto();
         List<Author> authors = authorService.getAuthorList();
 
         BaseApiResponse<List<Author>> response =
@@ -42,20 +43,24 @@ public class SarisokuController {
     }
 
     @GetMapping("/getAuthorById")
-    public ResponseEntity<BaseApiResponse<List<Author>>> getAuthorbyId(@RequestParam Long Id){
+    public ResponseEntity<BaseApiResponse<Author>> getAuthorbyId(@RequestParam Long id) {
 
-        AuthorDto authorDto=new AuthorDto();
+        AuthorDto authorDto = new AuthorDto();
+        BaseApiResponse<Author> response = new BaseApiResponse<>();
+        Optional<Author> authors = authorService.findById(id);
+        if (authors.isPresent()) {
 
-        List<Author> authors = authorService.getAuthorList();
-        BaseApiResponse<List<Author>> response =
-                BaseApiResponse.ok(authors, "Authors fetched successfully");
+            response = BaseApiResponse.ok(authors.get(), "Authors fetched successfully");
 
+
+            return ResponseEntity.ok(response);
+        }
 
         return ResponseEntity.ok(response);
-
     }
+
     @PostMapping("/saveAuthor")
-    public ResponseEntity<BaseApiResponse<Author>> saveAuthor(@RequestBody  AuthorDto dto){
+    public ResponseEntity<BaseApiResponse<Author>> saveAuthor(@RequestBody AuthorDto dto) {
 
         Author author = new Author();
         author.setName(dto.getName());
@@ -81,10 +86,16 @@ public class SarisokuController {
         return ResponseEntity.ok(response);
 
 
-
     }
 
+    @DeleteMapping("/deleteAuthorById")
+    public  ResponseEntity<BaseApiResponse<Void>> deleteAuthorById(@RequestParam Long id){
 
+        authorService.deleteAuthor(id);//TODO try catch ile silinme durumunda hatayı nasıl handle edersin düşün ??Sümüşş
+
+        BaseApiResponse<Void> response=BaseApiResponse.ok(null,"yazar silindi");
+        return ResponseEntity.ok(response);
+    }
 
 
 }
